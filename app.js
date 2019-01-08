@@ -3,15 +3,13 @@
  */
 import express from "express";
 import bodyParser from "body-parser";
-import fs from "fs"
-import cookieParser from "cookie-parser";
 import mongoose from "mongoose";
 import morgan from "morgan";
 import path from "path";
-import favicon from 'serve-favicon';
 import socketEvents from './socketio/socket';
 import configs from './api/config';
 import {getTotalSkully} from "./api/libs/CrawlerSkully";
+
 /**
  * Global variables
  */
@@ -58,8 +56,10 @@ import {queueUI} from './api/Queue';
 queueUI.listen(configs.kueUI.port, function () {
   console.log('Queue listening on port:' + configs.kueUI.port);
 });
-import * as web3_Socket from './api/libs/wss';
+import * as web3_Socket from './api/libs/events/main.event';
+import * as Auction from './api/libs/events/auction.event';
 //server lang nghe
+import * as worker from './api/workers/index.workers';
 
 server.on('error', onError);
 server.on('listening', onListening);

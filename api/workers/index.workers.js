@@ -1,1 +1,2 @@
-import * as MintWoker from './mint.worker';
+import * as MainWoker from './main.worker';
+import * as AuctionWorker from './auction.worker';
